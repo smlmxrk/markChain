@@ -66,7 +66,7 @@ public class Transaction {
         }
 
         for (TransactionInput i : inputs) {
-            if (i.UTXO != null) continue;
+            if (i.UTXO == null) continue;
             MarkChain.UTXOs.remove(i.UTXO.id);
         }
         return true;

@@ -1,3 +1,5 @@
+import com.google.gson.GsonBuilder;
+
 import java.nio.charset.StandardCharsets;
 import java.security.*;
 import java.util.ArrayList;
@@ -48,6 +50,15 @@ public class StringUtil {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static String getJson(Object o) {
+        return new GsonBuilder().setPrettyPrinting().create().toJson(o);
+    }
+
+    //Returns difficulty string target, to compare to hash. eg difficulty of 5 will return "00000"
+    public static String getDifficultyString(int difficulty) {
+        return new String(new char[difficulty]).replace('\0', '0');
     }
 
     public static String getStringFromKey(Key key) {
